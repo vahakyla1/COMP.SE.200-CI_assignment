@@ -3,20 +3,17 @@ import Products from "./testData/products.js";
 import isEmpty from "../isEmpty.js";
 
 describe("Empty value validation tests (isEmpty.js)", function () {
-  // Check mandatory and optional string fields
   it("ISEMPTY-001: should validate empty and non-empty strings", function () {
     expect(isEmpty("")).to.be.true;
     expect(isEmpty(Products[3].category)).to.be.true;
     expect(isEmpty(Products[0].name)).to.be.false;
   });
 
-  // Check product lists
   it("ISEMPTY-002: should validate empty and non-empty arrays", function () {
     expect(isEmpty([])).to.be.true;
     expect(isEmpty(Products)).to.be.false;
   });
 
-  // Check product objects
   it("ISEMPTY-003: should validate empty and non-empty objects", function () {
     expect(isEmpty({})).to.be.true;
     expect(isEmpty(Products[0])).to.be.false;
@@ -27,7 +24,6 @@ describe("Empty value validation tests (isEmpty.js)", function () {
     expect(isEmpty(undefined)).to.be.true;
   });
 
-  // Numbers and booleans are treated as empty
   it("ISEMPTY-005: should return true for numbers and booleans", function () {
     expect(isEmpty(0)).to.be.true;
     expect(isEmpty(3.5)).to.be.true;
@@ -35,7 +31,6 @@ describe("Empty value validation tests (isEmpty.js)", function () {
     expect(isEmpty(false)).to.be.true;
   });
 
-  // Check Map and Set collections
   it("ISEMPTY-006: should validate Map and Sets", function () {
     expect(isEmpty(new Map())).to.be.true;
     expect(isEmpty(new Map([["a", 1]]))).to.be.false;
